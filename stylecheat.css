@@ -13,6 +13,8 @@ body {
 .display {
   width: 250px;
   height: 30px;
+  display: flex;
+  justify-content: flex-end;
 }
 .buttons {
   display: grid;
@@ -42,9 +44,17 @@ body {
 }
 .ACbtn {
   background-color: rgba(255, 0, 0, 0.8);
-    width: 200%;
 }
 .equalBtn {
-  background-color: rgba(0, 0, 255, 0.788);
-  height: 300%;
+  background-color: rgba(0, 0, 255, 0.70);
+  height: 100%;
+}
+.sinBtn,
+.cosBtn,
+.πBtn,
+.eBtn,
+.tanBtn,
+.logBtn{
+  background-color: rgb(190, 198, 214);
+
 }

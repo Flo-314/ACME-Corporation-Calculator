@@ -38,19 +38,32 @@ nineBtn.addEventListener("mousedown", () => (display.textContent += 9));
 zeroBtn.addEventListener("mousedown", () => (display.textContent += 0));
 piBtn.addEventListener("mousedown", () => (display.textContent = 3.14));
 eBtn.addEventListener("mousedown", () => (display.textContent = 2.71));
+
 ACBtn.addEventListener("mousedown", () => (display.textContent = undefined));
 addBtn.addEventListener("mousedown", () => addOperator("add"));
 menosBtn.addEventListener("mousedown", () => addOperator("substract"));
 multiplyBtn.addEventListener("mousedown", () => addOperator("multiply"));
 divideBtn.addEventListener("mousedown", () => addOperator("divide"));
 ACBtn.addEventListener("mousedown", () => clearFunc());
-equalBtn.addEventListener("mousedown", () =>
-  operate(
+equalBtn.addEventListener("mousedown", () => {
+ //verifico que el text content tenga contenido. si no duelve undefined para que la operacion operate(K) haga nada. 
+  if (display.textContent == "") {
     displayValue.currentOperator,
-    +displayValue.secondValue,
-    +display.textContent
-  )
-);
+      +displayValue.secondValue,
+      undefined;
+  } else {
+    operate(
+      displayValue.currentOperator,
+      +displayValue.secondValue,
+      +display.textContent
+    );
+  }
+});
+dotBtn.addEventListener("mousedown", () => {
+  if (display.textContent.length !== 0 && !display.textContent.includes(".")) {
+    display.textContent += ".";
+  }
+});
 
 function add(a, b) {
   return a + b;
@@ -67,30 +80,38 @@ function divide(a, b) {
 
 function operate(currentOperation, firstNumber, secondNumber) {
   let result = 0;
-  switch (currentOperation) {
-    case "add":
-      result = add(firstNumber, secondNumber);
-      break;
-    case "substract":
-      result = substract(firstNumber, secondNumber);
-      break;
-    case "multiply":
-      result = multiply(firstNumber, secondNumber);
-      break;
-    case "divide":
-      result = divide(firstNumber, secondNumber);
-      break;
+
+  if (
+    firstNumber !== undefined &&
+    currentOperation !== undefined &&
+    secondNumber !== undefined
+  ) {
+    switch (currentOperation) {
+      case "add":
+        result = add(firstNumber, secondNumber);
+        break;
+      case "substract":
+        result = substract(firstNumber, secondNumber);
+        break;
+      case "multiply":
+        result = multiply(firstNumber, secondNumber);
+        break;
+      case "divide":
+        result = divide(firstNumber, secondNumber);
+        break;
+    }
+    result = Math.round(+result * 10000) / 10000;
+    display.textContent = result;
+    displayValue.secondValue = undefined;
+    displayValue.currentOperator = undefined;
+  } else {
   }
-  result = Math.round(+result * 10000) / 10000;
-  display.textContent = result;
-  displayValue.secondValue = undefined
-  displayValue.currentOperator = undefined
   return result;
 }
 
 function addOperator(operator) {
   if (displayValue.currentOperator == undefined) {
-    //
+    // si no hay operador, guarda los numeros del display, borra el display y guarda el operador.
     displayValue.secondValue = display.textContent;
     displayValue.currentOperator = operator;
     display.textContent = "";

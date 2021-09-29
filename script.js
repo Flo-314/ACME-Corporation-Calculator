@@ -78,8 +78,9 @@ function operate(currentOperation, firstNumber, secondNumber) {
   } else if (currentOperation == "divide") {
     result = divide(firstNumber, secondNumber);
   }
+  result = Math.round(+result * 10000) /10000
   display.textContent = result;
-  return result;
+  return result
 }
 function addOperator(operator) {
   if (displayValue.currentOperator == undefined) {

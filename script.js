@@ -83,6 +83,8 @@ function operate(currentOperation, firstNumber, secondNumber) {
   }
   result = Math.round(+result * 10000) / 10000;
   display.textContent = result;
+  displayValue.secondValue = undefined
+  displayValue.currentOperator = undefined
   return result;
 }
 

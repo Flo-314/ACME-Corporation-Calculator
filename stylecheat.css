@@ -52,6 +52,7 @@ body {
 .πBtn,
 .eBtn,
 .tanBtn,
-.logBtn {
+.logBtn,
+.piBtn {
   background-color: rgb(190, 198, 214);
 }

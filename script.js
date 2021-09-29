@@ -45,12 +45,16 @@ menosBtn.addEventListener("mousedown", () => addOperator("substract"));
 multiplyBtn.addEventListener("mousedown", () => addOperator("multiply"));
 divideBtn.addEventListener("mousedown", () => addOperator("divide"));
 ACBtn.addEventListener("mousedown", () => clearFunc());
+deleteBtn.addEventListener("mousedown", () => {
+  display.textContent = display.textContent.slice(
+    0,
+    display.textContent.length - 1
+  );
+});
 equalBtn.addEventListener("mousedown", () => {
- //verifico que el text content tenga contenido. si no duelve undefined para que la operacion operate(K) haga nada. 
+  //verifico que el text content tenga contenido. si no duelve undefined para que la operacion operate(K) haga nada.
   if (display.textContent == "") {
-    displayValue.currentOperator,
-      +displayValue.secondValue,
-      undefined;
+    displayValue.currentOperator, +displayValue.secondValue, undefined;
   } else {
     operate(
       displayValue.currentOperator,

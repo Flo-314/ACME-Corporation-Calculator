@@ -52,7 +52,6 @@ equalBtn.addEventListener("mousedown", () =>
   )
 );
 
-// Basic operations
 function add(a, b) {
   return a + b;
 }
@@ -65,32 +64,43 @@ function multiply(a, b) {
 function divide(a, b) {
   return a / b;
 }
-// Basic operations
 
 function operate(currentOperation, firstNumber, secondNumber) {
   let result = 0;
-  if (currentOperation == "add") {
-    result = add(firstNumber, secondNumber);
-  } else if (currentOperation == "substract") {
-    result = substract(firstNumber, secondNumber);
-  } else if (currentOperation == "multiply") {
-    result = multiply(firstNumber, secondNumber);
-  } else if (currentOperation == "divide") {
-    result = divide(firstNumber, secondNumber);
+  switch (currentOperation) {
+    case "add":
+      result = add(firstNumber, secondNumber);
+      break;
+    case "substract":
+      result = substract(firstNumber, secondNumber);
+      break;
+    case "multiply":
+      result = multiply(firstNumber, secondNumber);
+      break;
+    case "divide":
+      result = divide(firstNumber, secondNumber);
+      break;
   }
-  result = Math.round(+result * 10000) /10000
+  result = Math.round(+result * 10000) / 10000;
   display.textContent = result;
-  return result
+  return result;
 }
+
 function addOperator(operator) {
   if (displayValue.currentOperator == undefined) {
+    //
     displayValue.secondValue = display.textContent;
     displayValue.currentOperator = operator;
     display.textContent = "";
-  } else if(displayValue.currentOperation == undefined && display.textContent == ""){
-    displayValue.currentOperator = operator
-  } 
-  
+
+    // si no tiene definido ni la operacion ni el text content, cambia de operador
+  } else if (
+    displayValue.currentOperation == undefined &&
+    display.textContent == ""
+  ) {
+    displayValue.currentOperator = operator;
+  }
+  // si tiene definido todo, hace la misma operacion que haría un igual.
   else if (
     displayValue.currentOperator !== undefined &&
     displayValue.secondValue !== undefined &&

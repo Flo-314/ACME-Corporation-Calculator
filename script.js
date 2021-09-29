@@ -1,6 +1,5 @@
 let displayValue = [];
 
-
 const display = document.querySelector(".display");
 const addBtn = document.querySelector(".addBtn");
 const menosBtn = document.querySelector(".menosBtn");
@@ -45,12 +44,13 @@ menosBtn.addEventListener("mousedown", () => addOperator("substract"));
 multiplyBtn.addEventListener("mousedown", () => addOperator("multiply"));
 divideBtn.addEventListener("mousedown", () => addOperator("divide"));
 
-equalBtn.addEventListener("mousedown", () => operate(displayValue.currentOperator, +displayValue.secondValue, +display.textContent));
-
-
-
-
-
+equalBtn.addEventListener("mousedown", () =>
+  operate(
+    displayValue.currentOperator,
+    +displayValue.secondValue,
+    +display.textContent
+  )
+);
 
 // Basic operations
 function add(a, b) {
@@ -68,7 +68,7 @@ function divide(a, b) {
 // Basic operations
 
 function operate(currentOperation, firstNumber, secondNumber) {
- let result = 0
+  let result = 0;
   if (currentOperation == "add") {
     result = add(firstNumber, secondNumber);
   } else if (currentOperation == "substract") {
@@ -78,12 +78,31 @@ function operate(currentOperation, firstNumber, secondNumber) {
   } else if (currentOperation == "divide") {
     result = divide(firstNumber, secondNumber);
   }
-  display.textContent = result
-  return result 
+  display.textContent = result;
+  return result;
 }
-function addOperator(operator){
-
-  displayValue.secondValue = display.textContent
-  displayValue.currentOperator = operator
-  display.textContent = ""
-} 
+function addOperator(operator) {
+  if (displayValue.currentOperator == undefined) {
+    displayValue.secondValue = display.textContent;
+    displayValue.currentOperator = operator;
+    display.textContent = "";
+  } else if (
+    displayValue.currentOperator !== undefined &&
+    displayValue.secondValue !== undefined &&
+    display.textContent !== ""
+  ) {
+    displayValue.currentOperator = operator
+    operate(
+      displayValue.currentOperator,
+      +displayValue.secondValue,
+      +display.textContent
+    );
+    displayValue.secondValue = display.textContent
+    display.textContent = ""
+  }
+}
+function clearFunc(){
+  displayValue.currentOperator = undefined
+  displayValue.secondValue = undefined
+  display.textContent = undefined
+}

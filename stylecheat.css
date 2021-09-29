@@ -21,8 +21,6 @@ body {
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-
-
 .addBtn,
 .menosBtn,
 .multiplyBtn,
@@ -46,7 +44,7 @@ body {
   background-color: rgba(255, 0, 0, 0.8);
 }
 .equalBtn {
-  background-color: rgba(0, 0, 255, 0.70);
+  background-color: rgba(0, 0, 255, 0.7);
   height: 100%;
 }
 .sinBtn,
@@ -54,7 +52,6 @@ body {
 .πBtn,
 .eBtn,
 .tanBtn,
-.logBtn{
+.logBtn {
   background-color: rgb(190, 198, 214);
-
 }

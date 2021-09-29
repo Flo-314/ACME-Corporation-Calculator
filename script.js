@@ -43,7 +43,7 @@ addBtn.addEventListener("mousedown", () => addOperator("add"));
 menosBtn.addEventListener("mousedown", () => addOperator("substract"));
 multiplyBtn.addEventListener("mousedown", () => addOperator("multiply"));
 divideBtn.addEventListener("mousedown", () => addOperator("divide"));
-
+ACBtn.addEventListener("mousedown", () => clearFunc());
 equalBtn.addEventListener("mousedown", () =>
   operate(
     displayValue.currentOperator,
@@ -86,23 +86,31 @@ function addOperator(operator) {
     displayValue.secondValue = display.textContent;
     displayValue.currentOperator = operator;
     display.textContent = "";
-  } else if (
+  } else if(displayValue.currentOperation == undefined && display.textContent == ""){
+    displayValue.currentOperator = operator
+  } 
+  
+  else if (
     displayValue.currentOperator !== undefined &&
     displayValue.secondValue !== undefined &&
     display.textContent !== ""
   ) {
-    displayValue.currentOperator = operator
     operate(
       displayValue.currentOperator,
       +displayValue.secondValue,
       +display.textContent
     );
-    displayValue.secondValue = display.textContent
-    display.textContent = ""
+    displayValue.secondValue = display.textContent;
+    display.textContent = "";
+    displayValue.currentOperator = operator;
   }
 }
-function clearFunc(){
-  displayValue.currentOperator = undefined
-  displayValue.secondValue = undefined
-  display.textContent = undefined
+function clearFunc() {
+  displayValue.currentOperator = undefined;
+  displayValue.secondValue = undefined;
+  display.textContent = undefined;
 }
+/*
+
+si yo meto otro operador => ejecute operate()
+*/

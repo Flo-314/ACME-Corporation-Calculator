@@ -14,7 +14,7 @@ body {
   margin: 40px;
   border: 8px solid #000;
   background-color: rgba(0, 0, 0, 0.604);
-  }
+}
 .display {
   width: auto;
   height: 70px;
@@ -61,14 +61,14 @@ body {
 .πBtn,
 .eBtn,
 .tanBtn,
-.logBtn,  
+.logBtn,
 .piBtn {
   background-color: rgb(190, 198, 214);
 }
-.deleteBtn{
-  background-color:thistle;
+.deleteBtn {
+  background-color: thistle;
 }
-button{
+button {
   border-radius: 5px;
   margin: 5px;
 }

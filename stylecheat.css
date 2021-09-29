@@ -7,17 +7,27 @@ body {
 .header {
 }
 .calculator {
-  height: 500px;
-  width: 250px;
-}
-.display {
-  width: 250px;
-  height: 30px;
   display: flex;
+  flex-direction: column;
+  height: 400px;
+  width: 300px;
+  margin: 40px;
+  border: 8px solid #000;
+  background-color: rgba(0, 0, 0, 0.604);
+  }
+.display {
+  width: auto;
+  height: 70px;
+  display: flex;
+  align-items: center;
   justify-content: flex-end;
+  font-size: 40px;
+  background-color: white;
 }
 .buttons {
+  height: 350px;
   display: grid;
+
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
@@ -45,14 +55,20 @@ body {
 }
 .equalBtn {
   background-color: rgba(0, 0, 255, 0.7);
-  height: 100%;
 }
 .sinBtn,
 .cosBtn,
 .πBtn,
 .eBtn,
 .tanBtn,
-.logBtn,
+.logBtn,  
 .piBtn {
   background-color: rgb(190, 198, 214);
+}
+.deleteBtn{
+  background-color:thistle;
+}
+button{
+  border-radius: 5px;
+  margin: 5px;
 }

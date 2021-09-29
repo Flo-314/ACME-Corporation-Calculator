@@ -148,7 +148,3 @@ function clearFunc() {
   displayValue.secondValue = undefined;
   display.textContent = undefined;
 }
-/*
-
-si yo meto otro operador => ejecute operate()
-*/
